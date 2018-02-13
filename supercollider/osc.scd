@@ -27,7 +27,7 @@ var oscs=
 var glob = 0;
 var freq = 440;
 var f = { |msg, time, replyAddr, recvPort|
-	var value = (msg[1].asFloat.abs).postln;
+	var value = (msg[1].asFloat.abs);
 	Ndef(\effects).set(\freq, value);
 };
 var list_f = { |list|
@@ -37,6 +37,7 @@ var list_f = { |list|
 		{OSCdef(word.asSymbol).disable}
 	)
 };
+Window.closeAll;
 OSCdef.freeAll;
 oscs.do { |name|
 	OSCdef(name.asSymbol, f, name.asSymbol).disable
