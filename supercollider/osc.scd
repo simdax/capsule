@@ -7,16 +7,30 @@ var oscs=
 	"/wii/1/button/B" -> {},
 	"/wii/1/button/Minus" -> {},
 	"/wii/1/button/Plus" -> {},
-	"/wii/1/accel/pry" -> { |msg, time, replyAddr, recvPort|
-		var value = msg[0];
+	"/wii/1/accel/pry/0" -> { |msg, time, replyAddr, recvPort|
+		var value = msg[1];
 		value.postln;
-		Ndef(\effects).set(\freq, value);
+		Ndef(\waves).set(\freq, value);
 		// Ndef(\player).set(\rate, value.round(0.5));
 	},
-	"/roll" -> {},
-	"/yaw" -> {},
-	"/pitch" -> {},
-	"/accel" -> {}
+	"/wii/1/accel/pry/1" -> { |msg, time, replyAddr, recvPort|
+		var value = msg[1];
+		value.postln;
+		Ndef(\waves).set(\freq, value);
+		// Ndef(\player).set(\rate, value.round(0.5));
+	},
+	"/wii/1/accel/pry/2" -> { |msg, time, replyAddr, recvPort|
+		var value = msg[1];
+		value.postln;
+		Ndef(\ocean).set(\rate, value * 5);
+		// Ndef(\player).set(\rate, value.round(0.5));
+	},
+	"/wii/1/accel/pry/3" -> { |msg, time, replyAddr, recvPort|
+		var value = msg[1];
+		value.postln;
+		Ndef(\waves).set(\freq, value);
+		// Ndef(\player).set(\rate, value.round(0.5));
+	},
 ].asDict;
 
 ~list_f = { |list|
