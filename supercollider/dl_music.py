@@ -14,7 +14,7 @@
 
 import os
 os.system('pip3 install --upgrade pip')
-os.system('sudo pip3 install pyyaml')
+os.system('sudo -H pip3 install pyyaml')
 import yaml
 
 os.system('mkdir -p music')
