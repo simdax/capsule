@@ -1,17 +1,24 @@
 (
+var files = "bd.yml".resolveRelative.parseYAMLFile;
 s.waitForBoot({
-	["ocean", "son"].do { arg name;
+	a.keysValuesDo{ |key, options|
+		var name = key;
 		Buffer.read(s, (name ++ ".wav").resolveRelative,
-		action:	{arg b;
+			options['from'],
+			options['to'],
+			action:	{arg b;
 				Ndef(name.asSymbol, { | rate = 1 |
 					PlayBuf.ar(2, b,
 						LinLin.kr(rate, 0, 1, 0.8, 1.1),
-						doneAction: Done.freeSelf)
+						//					doneAction: Done.freeSelf)
+					)
 				});
 		})
 	}
 })
 )
+
+Ndef(\son).play
 
 (
 
