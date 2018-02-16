@@ -1,9 +1,10 @@
 (
 var files = "db.yaml".resolveRelative.parseYAMLFile;
 s.waitForBoot({
-	a.keysValuesDo{ |key, options|
+	files.keysValuesDo{ |key, options|
 		var name = key;
-		Buffer.read(s, (name ++ ".wav").resolveRelative,
+		"opening %".postf(name);
+		Buffer.read(s, ("music/" ++ name ++ ".wav").resolveRelative,
 			options['from'],
 			options['to'],
 			action:	{arg b;
@@ -18,7 +19,7 @@ s.waitForBoot({
 })
 )
 
-Ndef(\essai2).play
+Ndef(\scriabine).play
 
 (
 Ndef(\effects, { |freq = 1|
