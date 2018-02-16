@@ -19,6 +19,8 @@ nature:
   url: https://www.youtube.com/watch?v=EOiNe_GpcHE
   effects:
     - volumeA:
+        type: HPF
         range: [-20.5, -5.3]
     - volumeB:
+        type: HPF
         range: [-20.5, +2.1]

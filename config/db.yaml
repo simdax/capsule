@@ -1,16 +1,19 @@
 oud:
   url: https://www.youtube.com/watch?v=fnWU3W9dW4s
+
 scriabine:
   url: https://www.youtube.com/watch?v=NSsKJIzwapA
+
 debussy:
   url: https://www.youtube.com/watch?v=3dYZF956_5c&feature=youtu.be
   effect:
-    - low cut:
+    - lowCut:
       range: [65, 1480]
- nature:
+
+nature:
   url: https://www.youtube.com/watch?v=EOiNe_GpcHE
   effect:
-    - volume:
+    - volumeA:
       range: [-20.5 -5.3]
-    - volume:
+    - volumeB:
       range: [-20.5 +2.1]
