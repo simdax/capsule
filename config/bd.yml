@@ -1,17 +1,18 @@
+# Please consider using double quotes for youtube links
 oud:
-  url: https://www.youtube.com/watch?v=fnWU3W9dW4s
+  url: "https://www.youtube.com/watch?v=fnWU3W9dW4s"
 
 scriabine:
-  url: https://www.youtube.com/watch?v=NSsKJIzwapA
+  url: "https://www.youtube.com/watch?v=NSsKJIzwapA"
 
 debussy:
-  url: https://www.youtube.com/watch?v=3dYZF956_5c&feature=youtu.be
+  url: "https://www.youtube.com/watch?v=3dYZF956_5c"
   effect:
     - lowCut:
       range: [65, 1480]
 
 nature:
-  url: https://www.youtube.com/watch?v=EOiNe_GpcHE
+  url: "https://www.youtube.com/watch?v=EOiNe_GpcHE"
   effect:
     - volumeA:
       range: [-20.5 -5.3]

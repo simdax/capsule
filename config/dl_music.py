@@ -12,6 +12,8 @@
 
 #!/usr/bin/env python3
 
+# Apparently it work's with python so maybe no need to install python3
+
 import os
 os.system('pip3 install --upgrade pip')
 os.system('sudo -H pip3 install pyyaml')
@@ -45,6 +47,4 @@ for key in data.keys():
         if os.system("which youtube-dl"):
             print("installing youtube-dl")
             os.system("sudo pip install --upgrade youtube_dl")
-        os.system("youtube-dl -x "+data[key]['url']+" -o music/"+key+".opus")
-        os.system("ffmpeg -i music/"+key+".opus music/"+tmp+"")
-        os.system("rm music/"+key+".opus")
+        os.system("youtube-dl -x --audio-quality 0 --audio-format 'wav' "+data[key]['url']+" -o music/"+tmp+"")
