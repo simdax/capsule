@@ -7,31 +7,39 @@ s.waitForBoot({
 			options['from'],
 			options['to'],
 			action:	{arg b;
-				Ndef(name.asSymbol, { | rate = 1 |
+				Ndef(name.asSymbol, { | rate = 1, t_trig = 1 |
 					PlayBuf.ar(2, b,
 						LinLin.kr(rate, 0, 1, 0.8, 1.1),
-						//					doneAction: Done.freeSelf)
+						t_trig,
+						doneAction: Done.freeSelf)
 					)
 				});
-		})
-	}
-})
+				options['effects'] !? {
+					options['effects'].do{ arg effect;
+					effect.keysValuesDo { effect_name, opt;
+						Ndef((name ++ effect_name).asSymbol, { |freq = 1|
+							var sigIn, rate;
+							sigIn = Ndef(name.asSymbol);
+							rate = LinExp.kr(freq, 0, 1, opt['range'][0], opt[\range][1]);
+							HPF.ar(sigIn, rate);
+							// opt[\type].ar(sigIn, rate);
+						});
+					} }
+				}
+			)
+		}
+	})
 )
 
-Ndef(\essai2).play
+
+Ndef(\scriabine).set(\t_trig, 1)
+
 
 (
 Ndef(\effects, { |freq = 1|
 	var sigIn = Ndef(\player) * 10;
 	var rate = LinLin.kr(freq, 0, 1, 200, 4000);
 	var eq = HPF.ar(sigIn, rate);
-	// var eq = LPF.ar(sigIn, MouseX.kr(200, 1000, 1, 0), 2);
-	// var eq = LPF.ar(sigIn, Saw.kr(20, 200, MouseX.kr(150, 500)), 2);
-	//var eq = LPF.ar(sigIn, SinOsc.kr(100, 0, 10, 4000), 2);
-	// var out = FreeVerb.ar(eq, freq, 1);
-	// var eq = Ringz.ar(sigIn, MouseX.kr(150, 200, 1), 0.125);
-	// var eq = Resonz.ar(sigIn, MouseX.kr(3350, 5500, 1), 0.005, 0.0125);
-	// out;
 	eq;
 });
 )
