@@ -4,5 +4,13 @@ scriabine:
   url: https://www.youtube.com/watch?v=NSsKJIzwapA
 debussy:
   url: https://www.youtube.com/watch?v=3dYZF956_5c&feature=youtu.be
-nature:
+  effect:
+    - low cut:
+      range: [65, 1480]
+ nature:
   url: https://www.youtube.com/watch?v=EOiNe_GpcHE
+  effect:
+    - volume:
+      range: [-20.5 -5.3]
+    - volume:
+      range: [-20.5 +2.1]
