@@ -1,9 +1,9 @@
 (
 var files = "db.yaml".resolveRelative.parseYAMLFile;
 s.waitForBoot({
-	a.keysValuesDo{ |key, options|
+	files.keysValuesDo{ |key, options|
 		var name = key;
-		Buffer.read(s, (name ++ ".wav").resolveRelative,
+		Buffer.read(s, ("music/" ++ name ++ ".wav").resolveRelative,
 			options['from'],
 			options['to'],
 			action:	{arg b;
