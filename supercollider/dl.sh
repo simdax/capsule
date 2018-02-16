@@ -6,7 +6,8 @@ names=$(cat db.yaml | grep -v '  ' | sed "s/:/ /g")
 mkdir -p music
 i=1
 for file in $files; do
-   youtube-dl -x --audio-format wav $file \
-   -o "music/$(echo $names | cut -d " " -f $i).wav"
+   youtube-dl -x --audio-format wav $file
+   name=$(echo $names | cut -d " " -f $i).wav
+   mv *.wav music/$name
    ((i++))
 done

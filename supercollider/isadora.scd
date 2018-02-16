@@ -1,5 +1,5 @@
 (
-var files = "bd.yml".resolveRelative.parseYAMLFile;
+var files = "db.yaml".resolveRelative.parseYAMLFile;
 s.waitForBoot({
 	a.keysValuesDo{ |key, options|
 		var name = key;
@@ -18,10 +18,9 @@ s.waitForBoot({
 })
 )
 
-Ndef(\son).play
+Ndef(\essai2).play
 
 (
-
 Ndef(\effects, { |freq = 1|
 	var sigIn = Ndef(\player) * 10;
 	var rate = LinLin.kr(freq, 0, 1, 200, 4000);
