@@ -1,6 +1,6 @@
 oud:
   url: https://www.youtube.com/watch?v=fnWU3W9dW4s
-  effect: 
+  effect:
     - 879:
       bob: 5
       bab: 5
@@ -9,17 +9,18 @@ scriabine:
   url: https://www.youtube.com/watch?v=NSsKJIzwapA
   effects:
     - volumeA:
-        type: HPF,
-	range: [21, 30]
+      type: HPF
+      range: [21, 30]
 debussy:
   url: https://www.youtube.com/watch?v=3dYZF956_5c&feature=youtu.be
   effect:
-    - low cut:
+    - low_cut:
+      type: HPF
       range: [65, 1480]
- nature:
+nature:
   url: https://www.youtube.com/watch?v=EOiNe_GpcHE
   effect:
     - volume:
-      range: [-20.5 -5.3]
+      range: [-20.5, -5.3]
     - volume:
-      range: [-20.5 +2.1]
+      range: [-20.5, +2.1]
