@@ -4,10 +4,10 @@
 
 if [ $(uname -s) = "Linux" ]
 then
-	sudo apt-get -y install python3 python-yaml python3-pip ffmpeg
+	sudo apt-get -y install python3 python3-yaml python3-pip ffmpeg
 else
 	brew install python3
-	pip3 install --upgrade pip
+	pip3 install --upgrade pip3
 	sudo -H pip3 install pyyaml
 	brew install ffmpeg
 fi

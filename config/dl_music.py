@@ -32,8 +32,13 @@ dict = {}
 for dirname, dirnames, filenames in os.walk('./music'):
     for filename in filenames:
         dict[filename] = filename
-        #print(filename)
 
+if os.system("which ffmpeg"):
+    print("installing ffmpeg")
+    os.system("sudo apt-get install ffmpeg")
+if os.system("which youtube-dl"):
+    print("installing youtube-dl")
+    os.system("sudo pip install --upgrade youtube_dl")
 for key in data.keys():
     tmp = key + ".wav"
     print(key)
@@ -41,10 +46,5 @@ for key in data.keys():
         print("allready in my jukebox baby !")
     else:
         print("add music")
-        if os.system("which ffmpeg"):
-            print("installing ffmpeg")
-            os.system("sudo apt-get install ffmpeg")
-        if os.system("which youtube-dl"):
-            print("installing youtube-dl")
-            os.system("sudo pip install --upgrade youtube_dl")
-        os.system("youtube-dl -x --audio-quality 0 --audio-format 'wav' "+data[key]['url']+" -o music/"+tmp+"")
+        os.system("youtube-dl --quiet -x --audio-quality 0 --audio-format 'wav' \
+        "+data[key]['url']+" -o music/"+key+".%\(ext\)s")
