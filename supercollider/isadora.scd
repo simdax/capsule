@@ -17,7 +17,8 @@ var action = {arg name, options;
 				Ndef(name_effect.asSymbol, { |freq = 1|
 					var sigIn, rate;
 					sigIn = Ndef(name.asSymbol);
-					rate = LinExp.kr(freq, 0, 1, opt["range"][0].asFloat, opt["range"][1].asFloat);					opt["type"].asSymbol.asClass().ar(sigIn, rate);
+					rate = LinExp.kr(freq, 0, 1, opt["range"][0].asFloat, opt["range"][1].asFloat);
+					opt["type"].asSymbol.asClass().ar(sigIn, rate);
 				});
 			}
 		}
@@ -38,4 +39,27 @@ s.waitForBoot({
 	};
 	NdefMixer(s);
 });
+)
+Ndef(\debussy).isPlaying
+(
+var toggleNdef = {arg ndef;
+	if (dico[ndef.asSymbol].postln)
+	{Ndef(ndef).stop; dico[ndef.asSymbol] = false}
+	{Ndef(ndef).play; dico[ndef.asSymbol] = true}
+};
+var morceaux = [\debussy, \nature, \debussy, [\debussy, \nature]];
+var times = [10];
+var dico = (debussy: false, nature: false);
+Pbind(
+	\type, \rest,
+	\index, Pseries(),
+	\dur, Pseq(times, inf),
+	\finish, Pfunc{ arg ev;
+		morceaux[ev.index].asArray
+		.do { arg piece;
+			toggleNdef.(piece)
+		};
+		true
+	}
+).trace.play
 )
