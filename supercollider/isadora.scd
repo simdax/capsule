@@ -5,11 +5,12 @@ var action = {arg name, options;
 	{arg b;
 		"ready for : %\n".postf(name);
 		~buffers = ~buffers.add(b);
-		Ndef(name.asSymbol, { | rate = 1, t_trig = 1, pan, hpf, lpf, gain|
-			PlayBuf.ar(2, b,
+		Ndef(name.asSymbol, { | rate = 1, pos=0,  t_trig = 1, pan, hpf, lpf, gain|
+			Pan2.ar(PlayBuf.ar(2, b,
 				LinLin.kr(rate, 0, 1, 0.8, 1.1),
 				t_trig,
 				doneAction: Done.freeSelf)
+			, pos)
 		});
 		effects.(name.asSymbol);
 	}
