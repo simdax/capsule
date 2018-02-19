@@ -42,7 +42,6 @@ var list_f = { |list|
 Window.closeAll;
 OSCdef.freeAll;
 (oscs1 ++ oscs2).keysValuesDo { |key, val|
-	key.postln;
 	OSCdef(key.asSymbol, val, key.asSymbol).disable
 };
 w = FlowView(nil, 500@300).front;
