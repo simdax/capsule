@@ -15,11 +15,31 @@ class OscMessage(object):
   An OSC message consists of an OSC Address Pattern followed by an OSC
   Type Tag String followed by zero or more OSC Arguments.
   """
+  """
+  
+   |  address
+   |      Returns the OSC address regular expression.
+   |  
+   |  dgram
+   |      Returns the datagram from which this message was built.
+   |  
+   |  params
+   |      Convenience method for list(self) to get the list of parameters.
+   |  
+   |  size
+   |      Returns
+  """
+
 
   def __init__(self, dgram):
     self._dgram = dgram
     self._parameters = []
     self._parse_datagram()
+ #   print("oui\n")
+ #   print("dgram", self.dgram)
+ #   print("address", self.address)
+ #   print("params", self.params)
+ #   help("size", self.size)
 
   def _parse_datagram(self):
     try:
@@ -70,6 +90,7 @@ class OscMessage(object):
       self._parameters = params
     except osc_types.ParseError as pe:
       raise ParseError('Found incorrect datagram, ignoring it', pe)
+    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ address:", self.address,"   value:", val)
 
   @property
   def address(self):

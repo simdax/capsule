@@ -23,19 +23,19 @@ def get_save_path():
 
 def send_to_client(arg_name, arg_value, f_rec):
   parser = argparse.ArgumentParser()
-  parser.add_argument("--ip", default="127.0.0.1",
-  help="The ip of the OSC server")
-  parser.add_argument("--port", type=int, default=4242,
-  help="The port the OSC server is listening on")
-  args = parser.parse_args()
-  
-  client = udp_client.SimpleUDPClient(args.ip, args.port)
-  
-  client.send_message(arg_name , arg_value)
-  t = time.time()
-  to_save = str(t) + " : " + arg_name + " : " + str(arg_value) + "\n"
-  print(to_save)
-  f_rec.write(to_save);
+parser.add_argument("--ip", default="127.0.0.1",
+help="The ip of the OSC server")
+parser.add_argument("--port", type=int, default=57120,
+help="The port the OSC server is listening on")
+args = parser.parse_args()
+
+client = udp_client.SimpleUDPClient(args.ip, args.port)
+
+client.send_message(arg_name , arg_value)
+t = time.time()
+to_save = str(t) + " : " + arg_name + " : " + str(arg_value) + "\n"
+print(to_save)
+f_rec.write(to_save);
 
 
 if __name__ == "__main__":
@@ -43,10 +43,8 @@ if __name__ == "__main__":
   path = get_save_path()
   print("the path:", path)
   f = open(path, 'w')
-  a = 0
-  for a in range(60):
+  for a in rang (200):
     send_to_client("/acc", random.random(), f)
-    send_to_client("/acc2", random.random(), f)
     time.sleep(0.5)
   f.close
 

@@ -31,6 +31,7 @@ class Dispatcher(object):
     self._map[address].append(Handler(handler, list(args)))
 
   def handlers_for_address(self, address_pattern):
+   # print("toi\n")
     """yields Handler namedtuples matching the given OSC pattern."""
     # First convert the address_pattern into a matchable regexp.
     # '?' in the OSC Address Pattern matches any single character.
@@ -38,16 +39,28 @@ class Dispatcher(object):
     # explicitly in the specification but it sounds good.
     escaped_address_pattern = re.escape(address_pattern)
     pattern = escaped_address_pattern.replace('\\?', '\\w?')
+
+
+ #   print(">>>>>>", escaped_address_pattern, "<<<<\n")
+ #   print("######", pattern, "#####\n")
     # '*' in the OSC Address Pattern matches any sequence of zero or more
     # characters.
     pattern = pattern.replace('\\*', '[\w|\+]*')
+ #   print("######", pattern, "#####\n")
     # The rest of the syntax in the specification is like the re module so
     # we're fine.
     pattern = pattern + '$'
+ #   print("######", pattern, "#####\n")
     pattern = re.compile(pattern)
+ #   print("######", pattern, "#####\n")
     matched = False
 
+ #   print(self._map.items())
+
     for addr, handlers in self._map.items():
+   #   print("addr:", addr)
+   #   print("handlers:", handlers)
+   #   print("item:", self.map.items)
       if (pattern.match(addr)
         or (('*' in addr) and re.match(addr.replace('*','[^/]*?/*'), address_pattern))):
         yield from handlers
