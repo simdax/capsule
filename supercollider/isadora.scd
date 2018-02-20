@@ -1,6 +1,9 @@
 (
+// load files infos
 var files = "db.yaml".resolveRelative.parseYAMLFile;
-var effects = "effects.scd".resolveRelative.load;
+// add effects to tracks callback
+var effects = "effects.scd".resolveRelative.load; //module loader
+// put sound files in playable tracks callback
 var action = {arg name, options;
 	{arg b;
 		"ready for : %\n".postf(name);
@@ -15,12 +18,16 @@ var action = {arg name, options;
 		effects.(name.asSymbol);
 	}
 };
+// load sound files in memory
+// here global (for reload no leak managment --- tldr)
 ~files = files;
 s.waitForBoot({
 	Ndef.clear;
+	// here are range inputs
 	Spec.add(\freq, [0, 1, \lin, 0.001]);
 	~buffers.do(_.free);
 	~buffers = [];
+	// load
 	files.keysValuesDo{ |key, options|
 		var name = key;
 		Buffer.read(s, ("music/" ++ name ++ ".wav").resolveRelative,
@@ -29,29 +36,9 @@ s.waitForBoot({
 			action.value(name, options)
 		);
 	};
+	// gui
 	NdefMixer(s);
 });
-)
-
-(
-var toggleNdef = {arg ndef;
-	if (dico[ndef.asSymbol])
-	{Ndef(ndef).stop; dico[ndef.asSymbol] = false}
-	{Ndef(ndef).play; dico[ndef.asSymbol] = true}
-};
-var morceaux = [\debussy, \nature, \debussy, [\debussy, \nature]];
-var times = [10];
-var dico = (debussy: false, nature: false);
-Pbind(
-	\type, \rest,
-	\index, Pseries(),
-	\dur, Pseq(times, inf),
-	\finish, Pfunc{ arg ev;
-		morceaux[ev.index].asArray
-		.do { arg piece;
-			toggleNdef.(piece)
-		};
-		true
-	}
-).trace.play
+// main player
+"main.scd".resolveRelative.load;
 )
