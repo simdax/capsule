@@ -5,13 +5,14 @@ var toggleNdef = {arg ndef;
 	{Ndef(ndef).stop; dico[ndef.asSymbol] = false}
 	{Ndef(ndef).play; dico[ndef.asSymbol] = true}
 };
-var morceaux = [\debussy, \nature, \debussy, [\debussy, \nature]];
+var morceaux = [\nature, \debussy, ];
+var effect =   [[\hpf], \rev];
 var times = [10];
 var dico = (debussy: false, nature: false);
 Pbind(
 	\type, \rest,
 	\index, Pseries(),
-	\dur, Pseq(times, inf),
+	// \dur, Pseq(times, inf),
 	\finish, Pfunc{ arg ev;
 		morceaux[ev.index].asArray
 		.do { arg piece;

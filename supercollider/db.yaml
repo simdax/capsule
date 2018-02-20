@@ -13,6 +13,7 @@ scriabine:
 
 debussy:
   url: https://www.youtube.com/watch?v=3dYZF956_5c&feature=youtu.be
+  from: 3
   effects:
     - low_cut:
         type: HPF

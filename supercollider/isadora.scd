@@ -1,8 +1,6 @@
 (
 // load files infos
 var files = "db.yaml".resolveRelative.parseYAMLFile;
-// add effects to tracks callback
-var effects = "effects.scd".resolveRelative.load; //module loader
 // put sound files in playable tracks callback
 var action = {arg name, options;
 	{arg b;
@@ -15,12 +13,12 @@ var action = {arg name, options;
 				doneAction: Done.freeSelf)
 			, pos)
 		});
-		effects.(name.asSymbol);
 	}
 };
 // load sound files in memory
 // here global (for reload no leak managment --- tldr)
 ~files = files;
+s.quit;
 s.waitForBoot({
 	Ndef.clear;
 	// here are range inputs
@@ -36,9 +34,13 @@ s.waitForBoot({
 			action.value(name, options)
 		);
 	};
+	// add effects to tracks
+	"effects.scd".resolveRelative.load; //module loader
+	"specs.scd".resolveRelative.load; //module loader
 	// gui
+	Window.closeAll;
 	NdefMixer(s);
+	// main player
+	//"main.scd".resolveRelative.load;
 });
-// main player
-"main.scd".resolveRelative.load;
 )
