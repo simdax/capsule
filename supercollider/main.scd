@@ -1,22 +1,20 @@
 // main
 (
-var toggleNdef = {arg ndef;
-	if (dico[ndef.asSymbol])
-	{Ndef(ndef).stop; dico[ndef.asSymbol] = false}
-	{Ndef(ndef).play; dico[ndef.asSymbol] = true}
-};
-var morceaux = [\nature, \debussy, ];
-var effect =   [[\hpf], \rev];
-var times = [10];
-var dico = (debussy: false, nature: false);
+var morceaux = [\nature, \debussy];
+var effects = [\hpf, \rev];
+var oscs = [\roll -> {Ndef(\rev).set()}];
+var times = [10, 23];
+Ndef(\main).fadeTime = 2;
 Pbind(
 	\type, \rest,
 	\index, Pseries(),
-	// \dur, Pseq(times, inf),
+	\ndef, Pseq(morceaux, inf),
+	\effects, Pseq(effects, inf),
+	\dur, Pseq(times, inf),
 	\finish, Pfunc{ arg ev;
-		morceaux[ev.index].asArray
-		.do { arg piece;
-			toggleNdef.(piece)
+		Ndef(\main).source = Ndef(ev.ndef);
+		(ev.effects.asArray ++ \main).reduce { arg a, b;
+			Ndef(a) <<> Ndef(b)
 		};
 		true
 	}

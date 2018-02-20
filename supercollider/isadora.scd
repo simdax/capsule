@@ -29,7 +29,7 @@ s.waitForBoot({
 	files.keysValuesDo{ |key, options|
 		var name = key;
 		Buffer.read(s, ("music/" ++ name ++ ".wav").resolveRelative,
-			options['from'],
+			options['from'] ? 0 * 44100,
 			options['to'],
 			action.value(name, options)
 		);
