@@ -13,8 +13,8 @@ var action = {arg name, options;
 				doneAction: Done.freeSelf)
 			, pos)
 		});
-	}
-};
+		}
+// };
 // load sound files in memory
 // here global (for reload no leak managment --- tldr)
 ~files = files;
@@ -29,7 +29,7 @@ s.waitForBoot({
 	files.keysValuesDo{ |key, options|
 		var name = key;
 		Buffer.read(s, ("music/" ++ name ++ ".wav").resolveRelative,
-			options['from'] ? 0 * 44100,
+			(options["from"].postln ? 0).asFloat * 44100,
 			options['to'],
 			action.value(name, options)
 		);
