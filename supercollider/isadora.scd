@@ -13,8 +13,8 @@ var action = {arg name, options;
 				doneAction: Done.freeSelf)
 			, pos)
 		});
-		}
-// };
+	}
+ };
 // load sound files in memory
 // here global (for reload no leak managment --- tldr)
 ~files = files;
