@@ -14,6 +14,7 @@ var setOSC = {arg wiimote, address, ndef, value;
 };
 ~setPart = { arg in, effects, oscs;
 	([\out] ++ effects ++ \in).reduce{ arg a, b;
+		a.postln; b.postln;
 		Ndef(a) <<> Ndef(b); b;
 	};
 	OSCdef.freeAll;
@@ -28,9 +29,6 @@ var setOSC = {arg wiimote, address, ndef, value;
 "isadora.scd".resolveRelative.load;
 )
 
-Ndef(\hpf) <<> Ndef(\scriabine);
-Ndef(\hpf).play;
-Ndef(\in).source = Ndef(\scriabine).send;
 (
 ~setPart.(\scriabine, [\hpf],
 	[

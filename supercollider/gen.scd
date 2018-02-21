@@ -1,4 +1,4 @@
-(
+oo(
 Event.addEventType(\ndef, {
 	Ndef(~ndef).set(\freq, ~freq);
 	Ndef(~ndef).send
