@@ -14,14 +14,18 @@ var setOSC = {arg wiimote, address, ndef, value;
 };
 ~setPart = { arg in, effects, oscs;
 	([\out] ++ effects ++ \in).reduce{ arg a, b;
-		Ndef(a) <<> Ndef(b);
+		Ndef(a) <<> Ndef(b); b;
 	};
 	OSCdef.freeAll;
 	oscs.do{ arg args;
-		setOSC.(...args);
-	}
+		setOSC.(*args);
+	};
 	Ndef(\in).source = Ndef(in).send;
 };
+)
+
+(
+"isadora.scd".resolveRelative.load;
 )
 
 

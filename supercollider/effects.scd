@@ -1,7 +1,6 @@
 (
 // Ndef.clear;
 // always play this both ugens (in - out)
-Ndef(\in).play;
 Ndef(\out, { arg side = 0;
 	Pan2.ar(\in.ar, LinLin.kr(side, 0, 1, -1, 1))
 }).play;
