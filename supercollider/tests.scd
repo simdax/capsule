@@ -28,10 +28,14 @@ var setOSC = {arg wiimote, address, ndef, value;
 "isadora.scd".resolveRelative.load;
 )
 
-
-~setPart.(\scriabine, [\hpf, \lpf],
+Ndef(\hpf) <<> Ndef(\scriabine);
+Ndef(\hpf).play;
+Ndef(\in).source = Ndef(\scriabine).send;
+(
+~setPart.(\scriabine, [\hpf],
 	[
-		[1, \roll, \hpf, \freq],
-		[2, \roll, \lpf, \freq],
+		// [1, \roll, \hpf, \freq],
+		// [2, \roll, \lpf, \freq],
 	]
 );
+)
