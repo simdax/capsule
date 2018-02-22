@@ -33,6 +33,7 @@ def yolo_swag(arg_name, arg_value):
   f = open("isadora_wii/tmp", 'a')
   to_save = str(time.time()) + " : " + arg_name + " : " + str(arg_value) + "\n"
   f.write(to_save)
+  print(to_save)
   send_to_client(arg_name, arg_value)
 #  help(self)
 #  print ("self.func:", self._print_file)
