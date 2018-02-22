@@ -1,5 +1,5 @@
 (
-// load files infos
+// load file, infos
 var files = "db.yaml".resolveRelative.parseYAMLFile;
 // put sound files in playable tracks callback
 var action = {arg name, options;
@@ -8,7 +8,9 @@ var action = {arg name, options;
         ~buffers = ~buffers.add(b);
         Ndef(name.asSymbol, { | rate = 1, t_trig = 1, gain = 1|
             PlayBuf.ar(2, b,
-                LinLin.kr(rate, 0, 1, 0.8, 1.1),
+				rate,
+				// BufSampleRate.ir(b),
+				// LinLin.kr(rate, 0, 1, 0.8, 1.1),
                 t_trig,
                 doneAction: Done.freeSelf) * gain
         });
@@ -17,7 +19,7 @@ var action = {arg name, options;
 // load sound files in memory
 // here global (for reload no leak managment --- tldr)
 ~files = files;
-s.quit;
+// s.quit;
 s.waitForBoot({
     Ndef.clear;
     // here are range inputs
@@ -36,9 +38,6 @@ s.waitForBoot({
     "effects.scd".resolveRelative.load; //effect loader
     "specs.scd".resolveRelative.load; //specs (inputs range) loader
     // gui
-    Window.closeAll;
     NdefMixer(s);
-    // main player
-    //"main.scd".resolveRelative.load;
 });
 )
