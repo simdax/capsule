@@ -1,0 +1,39 @@
++--------------------------+
+|   Convert OSC to MIDI    |
++--------------------------+
+	https://www.cockos.com/oscii-bot/oscii-bot-doc.html							===> dc super complette pour un outlis potemtielement puissante
+																						mais compliquer a prendre en main:
+																						Comment on le compile? Il a ete developper avec quel ide? et pour quell plateforme?
+	http://www.maxforlive.com/library/device/987/simple-osc-to-midi				===> pulgin abelton live?
+	http://cote.cc/blog/using-osculator-as-an-osc-to-midi-bridge				===> potentielement une solution super pratique
+
++--------------------------+
+| OpenBCI --> Ableton live |
++--------------------------+
+http://ml4a.github.io/classes/itp-S16/02/										===> Wekinator: un petit soft pour faire des baill artistique avec plein d'input possible ?????
+
++--------------------------+
+| OpenBCI -->  MIDI        |
++--------------------------+
+http://www.sonnenfern.com/														===> plein de lien a aplucher
+http://openbci.com/community/openbci-midi/										===> un projet aui est sansser faire le taf, meintenant il faut voir si le projet est accesible
+https://www.youtube.com/watch?v=o4zaPWBmvCs										===> une video youtube ou le mec montre qu'io a fait le taf
+
++--------------------------+
+| OSC --> Abelton Live     |
++--------------------------+
+https://www.ableton.com/en/packs/connection-kit/								===> Connection Kit : by Ableton
+https://livecontrol.q3f.org/ableton-liveapi/liveosc/							===> LiveOSC
+http://sonicbloom.net/en/livegrabber-to-sendreceive-osc-in-ableton-live/		===> LiveGrabber to Send/Receive OSC in Ableton Live ::::  Max For Live plugins
+https://www.youtube.com/watch?v=_ARlixvZ8AI										===> une video youtube qui parle de ca
+https://github.com/dinchak/LiveOSC												===> le github de liveOSC
+
+
++--------------------------+
+| Other things             |
++--------------------------+
+https://github.com/metavolution													===> un github avec des projet openbci
+http://openbci.com/community/neuro-music/										===> un projet de musiaue avec openBCI
+http://eeghacker.blogspot.fr/													===> un site avec des projet interessant
+http://ml4a.github.io/classes/itp-S16/02/										===> Wekinator: un petit soft pour faire des baill artistique avec plein d'input possible
+
