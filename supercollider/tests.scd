@@ -1,3 +1,9 @@
+// start main process, loading every sounds
+(
+"isadora.scd".resolveRelative.load;
+)
+// helpers:
+// setPart put an effect and link it with wiimote
 (
 var setOSC = {arg wiimote, address, ndef, value;
 	var add = 'wii/' ++ wiimote ++ '/' ++ (
@@ -24,13 +30,10 @@ var setOSC = {arg wiimote, address, ndef, value;
 	Ndef(\in).source = Ndef(in).send;
 };
 )
-
+// test with Scriabine
+// you can adapt the gain of every block in the chain
 (
-"isadora.scd".resolveRelative.load;
-)
-
-(
-~setPart.(\scriabine, [\hpf],
+~setPart.(\scriabine, [\hpf, \lpf],
 	[
 		// [1, \roll, \hpf, \freq],
 		// [2, \roll, \lpf, \freq],
