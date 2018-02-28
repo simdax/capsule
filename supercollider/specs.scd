@@ -1,4 +1,5 @@
 (
-// Spec.add(\freq, [0, 1, \lin, 0.001]);
 Spec.add(\freq, [0, 1]);
+Spec.add(\pan, [0, 1]);
+0;
 )

@@ -1,0 +1,1 @@
+Pbind(\dur, 2).play
