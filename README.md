@@ -1,4 +1,4 @@
-#CAPSULE 2 => module SuperCollider
+# CAPSULE 2 => Supercollider module
 
 Every file can be open with the Supercollider IDE, or executing 
 /Application/PathOfSupercollider.app/MacOS/sclang
