@@ -11,9 +11,10 @@ A quick example in pseudo code
 
 ```
 play { 
-       var sig = Osc.ar(440);
-       var out = Reverb.ar(sig, args for a reverb ....);
-       Out.ar(0);
+       var audioBus = 0 // main output == your speakers basically
+       var sig = Osc.ar(440); 
+       var out = Reverb.ar(sig	, args for a reverb ....);
+       Out.ar(audioBus, out);	
 }
 
 ```
